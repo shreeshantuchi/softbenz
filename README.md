@@ -1,16 +1,23 @@
-# product_detail
+# Build Runner Instructions for Freezed Annotation
 
-A new Flutter project.
+This document provides instructions on how to use `build_runner` to generate code for `freezed_annotation` in your Dart or Flutter project.
 
-## Getting Started
+## Prerequisites
 
-This project is a starting point for a Flutter application.
+- Dart SDK (>=2.12.0)
+- Flutter SDK (if applicable)
 
-A few resources to get you started if this is your first Flutter project:
+## Setup and Installation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. **Add Dependencies**: Open your `pubspec.yaml` file and include the following dependencies:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+   ```yaml
+   dependencies:
+     freezed_annotation: ^2.0.0  # Check for the latest version
+
+   dev_dependencies:
+     build_runner: ^2.0.0         # Check for the latest version
+     freezed: ^2.0.0              # Check for the latest version
+
+## ClI
+1. **Run Command**:lutter pub run build_runner build
