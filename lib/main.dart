@@ -5,6 +5,7 @@ import 'package:product_detail/feature/prouct_detail/data/datasource/product_det
 import 'package:product_detail/feature/prouct_detail/presentation/bloc/product_detail_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:product_detail/feature/prouct_detail/presentation/views/product_detail_base_view.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,7 +13,23 @@ void main() async {
   // Initialize the notification service
   final notificationService = LocalNotificationService();
   await notificationService.initialize();
+  await requestNotificationPermission();
   runApp(const MyApp());
+}
+
+Future<void> requestNotificationPermission() async {
+  PermissionStatus status = await Permission.notification.status;
+  print(status.name);
+  if (status.isDenied || status.isPermanentlyDenied) {
+    // Request notification permission
+    status = await Permission.notification.request();
+  }
+
+  if (status.isGranted) {
+    print("Notification permission granted");
+  } else {
+    print("Notification permission denied");
+  }
 }
 
 class MyApp extends StatelessWidget {

@@ -5,6 +5,7 @@ import 'package:product_detail/core/custom_button.dart';
 import 'package:product_detail/core/model/notification.dart';
 import 'package:product_detail/core/services/notification_service.dart';
 import 'package:product_detail/feature/prouct_detail/presentation/widgets/bottomIconBar/modle_bottom_view.dart';
+import 'package:product_detail/main.dart';
 
 class ProductDetailBottomBar extends StatelessWidget {
   const ProductDetailBottomBar({super.key});
@@ -54,7 +55,10 @@ class ProductDetailBottomBar extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(PhosphorIconsRegular.chat),
-            onPressed: _debounce(sendNotification, Duration(seconds: 1)),
+            onPressed: () async {
+              await requestNotificationPermission();
+              sendNotification();
+            },
             iconSize: 20.sp,
           ),
           // Center Elevated Button
