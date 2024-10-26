@@ -82,6 +82,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
           ),
         );
       } catch (e) {
+        print(e.toString());
         emit(
           ErrorState(error: "Error Loading"),
         );
